@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang=en><head>
+		<meta charset=UTF-8>
+		<title>Canvas 2D 3D Renderer</title>
+		<link type=text/css rel=stylesheet href=style.css>
+		<link type=text/css href=https://fonts.googleapis.com/css?family=Oxygen&amp;display=swap rel=stylesheet>
+	</head>
+	<body>
+		<h1>Canvas 2D 3D Renderer</h1>
+		<section class=container>
+			<div>
+				<label id=pitch>Pitch <span id=pitchFeedback></span><input type=range id=xrot min=-180 max=180></label>
+				<label id=yaw>Yaw <span id=yawFeedback></span><input type=range id=yrot min=-180 max=180></label>
+				<label id=roll>Roll <span id=rollFeedback></span><input type=range id=zrot min=-180 max=180></label>
+			</div>
+			<div>
+				<label>Light Power <span id=lpowFeedback></span><input type=range id=lpow min=0 max=10 value=6></label>
+				<label>Material Shininess <span id=shineFeedback></span><input type=range id=shine min=1 max=36 value=4></label>
+			</div>
+			<div>
+				<label>Color <select id=color>
+						<option value=grass>Grass and Dirt</option>
+						<option value=rgb>RGB Vertices</option>
+						<option value=gray>Solid Gray</option>
+					</select>
+				</label>
+				<label>Periodic Deformation <select id=deform>
+						<option value=sin>sin(x) + sin(z)</option>
+						<option value=random>Random Oscillation</option>
+						<option value=none>None (Plane)</option>
+					</select>
+				</label>
+			</div>
+		</section>
+		<section>
+			<canvas width=720 height=720></canvas>
+		</section>
+		<section>
+			<h3>About This Demo</h3>
+			<p>Using a renderer implented in Canvas2D, this lets you manipulate a couple different periodic functions in 3D.
+			The <code>sin(x) + sin(z)</code> option displays 2 simple intersecting sine waves.
+			The <code>Random Oscillation</code> oscillates every vertex up and down with a random phase offset.
+			<code>None</code> displays a flat plane for comparison.</p>
+			<p>To display the way vertex colors are interpolated, the material's style can be either a height-dependent grass and dirt, each vertex set to red, green, and blue, or a solid gray.
+			Light Power and Shininess are used to calculate vertex illumination based on the Blinn-Phong reflection model.
+			Per-pixel calculation and surface normals are too computationally expensive to render with this method.</p>
+			<p>This is NOT a practical way to render in 3D. WebGL will be much faster and support more complex effects.</p>
+		</section>
+		<script src=Renderer.js type=module></script>
+		<script src=index.js type=module></script>
+
+
+</body></html>
